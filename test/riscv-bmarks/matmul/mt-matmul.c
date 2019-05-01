@@ -48,7 +48,7 @@ extern void matmul_opt(const size_t coreid, const size_t ncores, const size_t ld
 void thread_entry(int cid, int nc)
 {
    static data_t results_data[ARRAY_SIZE];
-
+/*
    barrier(nc);
    stats(matmul(cid, nc, DIM_SIZE, input1_data, input2_data, results_data); barrier(nc), DIM_SIZE * DIM_SIZE * DIM_SIZE);
  
@@ -60,6 +60,8 @@ void thread_entry(int cid, int nc)
      for (int i = 0; i < ARRAY_SIZE; i++)
        results_data[i] = 0;
    }
+
+   */
 
    barrier(nc);
    stats(matmul_opt(cid, nc, DIM_SIZE, input1_data, input2_data, results_data); barrier(nc), DIM_SIZE * DIM_SIZE * DIM_SIZE);
