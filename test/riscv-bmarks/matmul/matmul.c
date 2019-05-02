@@ -30,21 +30,34 @@ void matmul_opt(const size_t coreid, const size_t ncores, const size_t lda,  con
 //    memset(C, 0, lda*lda);
 
     for (j = start_j; j < end_j; j++) {
-        for (i = 0; i < lda; i+=4) {
+        for (i = 0; i < lda; i+=8) {
             data_t sum_0 = 0;
             data_t sum_1 = 0;
             data_t sum_2 = 0;
             data_t sum_3 = 0;
+            data_t sum_4 = 0;
+            data_t sum_5 = 0;
+            data_t sum_6 = 0;
+            data_t sum_7 = 0;
+
             for (k = 0; k < lda; k++) {
                 sum_0 += A[j*lda + k] * B[k*lda + i];
                 sum_1 += A[j*lda + k] * B[k*lda + i+1];
                 sum_2 += A[j*lda + k] * B[k*lda + i+2];
                 sum_3 += A[j*lda + k] * B[k*lda + i+3];
+                sum_4 += A[j*lda + k] * B[k*lda + i+4];
+                sum_5 += A[j*lda + k] * B[k*lda + i+5];
+                sum_6 += A[j*lda + k] * B[k*lda + i+6];
+                sum_7 += A[j*lda + k] * B[k*lda + i+7];
             }
             C[i + j*lda] = sum_0;
             C[i + j*lda+1] = sum_1;
             C[i + j*lda+2] = sum_2;
             C[i + j*lda+3] = sum_3;
+            C[i + j*lda+4] = sum_4;
+            C[i + j*lda+5] = sum_5;
+            C[i + j*lda+6] = sum_6;
+            C[i + j*lda+7] = sum_7;
         }
     }
 }
