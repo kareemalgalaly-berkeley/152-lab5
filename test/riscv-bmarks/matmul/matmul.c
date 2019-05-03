@@ -31,6 +31,7 @@ void matmul(const size_t coreid, size_t ncores, const size_t lda,  const data_t 
 }
 /*
 void matmul_opt(const size_t coreid, const size_t ncores, const size_t lda,  const data_t A[], const data_t B[], data_t C[])
+A
 {
     size_t num_blocks = 1 << BLOCK_POWER;
     size_t block;
