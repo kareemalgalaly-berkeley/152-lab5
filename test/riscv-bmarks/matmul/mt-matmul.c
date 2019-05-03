@@ -61,6 +61,8 @@ void thread_entry(int cid, int nc)
        results_data[i] = 0;
    }
 
+   /*
+
    barrier(nc);
    stats(matmul_opt(cid, nc, DIM_SIZE, input1_data, input2_data, results_data); barrier(nc), DIM_SIZE * DIM_SIZE * DIM_SIZE);
 
@@ -74,6 +76,7 @@ void thread_entry(int cid, int nc)
        printMatrix(results_data, DIM_SIZE, DIM_SIZE);
      } else printf("Optimized matmul: SUCCESS\n");
    }
+   */
 
    barrier(nc);
    exit(0);
